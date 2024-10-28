@@ -1,0 +1,81 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Resource List</title>
+    <style>
+        .service-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .service {
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            margin: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            width: 300px;
+        }
+        .service h2 {
+            margin-top: 0;
+        }
+        .service p {
+            margin: 0;
+            padding-bottom: 5px;
+        }
+        .service ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0 0 5px;
+        }
+        .service ul li {
+            margin-bottom: 5px;
+        }
+        .button-container {
+            text-align: left; /* Початок блоку */
+            margin-top: 10px;
+        }
+        .button-container a {
+            display: inline-block;
+            margin: 5px 0; /* Зменшення відстані між кнопками */
+            padding: 8px 12px; /* Зменшення розміру кнопок */
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .button-container a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    
+<h1>Список послуг</h1>
+    <div class="service-container">
+        {% for service in services reversed%}
+            <div class="service">
+                <h2>{{ service.name }}</h2>
+                <p><strong>Ціна:</strong> ₴{{ service.price }}</p>
+                <p><strong>Тривалість:</strong> {{ service.duration }}</p>
+                <p><strong>Необхідні ресурси:</strong></p>
+                <ul>
+                    {% for service_resource in service.serviceresource_set.all %}
+                        <li>{{ service_resource.resource.name }} - Кількість: {{ service_resource.quantity }}</li>
+                    {% endfor %}
+                </ul>
+                <p>{{ service.description }}</p>
+            <div class="button-container">
+                <a href="{% url 'create_service_history' service.id %}">Створити запис історії послуги</a>
+            </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

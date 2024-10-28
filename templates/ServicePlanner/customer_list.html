@@ -1,0 +1,84 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .customer-list {
+            margin: 20px auto;
+            width: 80%;
+            border-collapse: collapse;
+        }
+        .customer-list th, .customer-list td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .customer-list th {
+            background-color: #f2f2f2;
+        }
+        .customer-list tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .customer-list tr:hover {
+            background-color: #f1f1f1;
+        }
+        .customer-actions a {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        .customer-actions a:hover {
+            text-decoration: underline;
+        }
+        .add-customer {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-customer:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Список клієнтів</h1>
+    <table class="customer-list">
+        <thead>
+            <tr>
+                <th>Ім'я</th>
+                <th>Прізвище</th>
+                <th>Електронна пошта</th>
+                <th>Номер телефону</th>
+                <th>Дії</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+            <tr>
+                <td>{{ customer.first_name }}</td>
+                <td>{{ customer.last_name }}</td>
+                <td>{{ customer.email }}</td>
+                <td>{{ customer.phone_number }}</td>
+                <td class="customer-actions">
+                    <a href="{% url 'customer_edit' customer.id %}">Редагувати</a>
+                    <a href="{% url 'delete_customer' customer.id %}">Видалити</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="add-customer" href="{% url 'add_customer' %}">Додати клієнта</a>
+{% endblock %}
+</body>
+</html>

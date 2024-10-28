@@ -1,0 +1,98 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календар</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        td {
+            cursor: pointer;
+        }
+        td:hover {
+            background-color: #f2f2f2;
+        }
+        .plans {
+            margin: 20px 0;
+        }
+        .plan-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background-color: #f9f9f9;
+        }
+        .plan-card h2 {
+            margin-top: 0;
+        }
+        .plan-card p {
+            margin: 5px 0;
+        }
+        .add-service {
+            display: inline-block;
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-service:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Календар</h1>
+    <table>
+        <thead>
+            <tr>
+                {% for day in days_of_week %}
+                <th>{{ day }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for week in weeks %}
+            <tr>
+                {% for date, day_of_week in week %}
+                <td>{{ date }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <a class="add-service" href="{% url 'add_future_service' %}">Запланувати послугу</a>
+    
+    <div class="plans">
+        <h1>Заплановані послуги</h1>
+        {% for plan in plans %}
+        <div class="plan-card">
+            <h2>{{ plan.date }}</h2>
+            <p><strong>Послуга:</strong> {{ plan.service.name }}</p>
+            <p><strong>Клієнт:</strong> {{ plan.client.name }}</p>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}
+</body>
+</html>

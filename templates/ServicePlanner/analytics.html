@@ -1,0 +1,35 @@
+<!-- У вашому шаблоні HTML (your_template.html) -->
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Period</title>
+</head>
+<body>
+    <h1>Enter Period</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    {% if plot_url1 %}
+        <h2>Distribution of Services Performed (Bar Chart)</h2>
+        <a href="data:image/png;base64,{{ plot_url1 }}" download="service_distribution_{{ period_name }}.png">
+            <img src="data:image/png;base64,{{ plot_url1 }}" alt="Service Distribution (Bar Chart)">
+            <button>Зберегти</button>
+        </a>
+    {% endif %}
+    {% if plot_url2 %}
+        <h2>Percentage of Services Performed (Pie Chart)</h2>
+        <a href="data:image/png;base64,{{ plot_url2 }}" download="service_percentage_{{ period_name }}.png">
+            <img src="data:image/png;base64,{{ plot_url2 }}" alt="Service Percentage (Pie Chart)">
+            <button>Save As</button>
+        </a>
+    {% endif %}
+{% endblock %}
+</body>
+</html>

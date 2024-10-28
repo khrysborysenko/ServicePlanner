@@ -1,0 +1,22 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+</head>
+<body>
+    <h1>Edit Customer</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Changes</button>
+        <a href="{% url 'customer_list' %}"><button type="button">Відмінити</button></a>
+    </form>
+
+{% endblock %}
+</body>
+</html>

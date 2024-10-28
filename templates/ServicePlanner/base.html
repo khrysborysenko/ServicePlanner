@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resource List</title>
+    <script>
+        var csrfToken = "{{ csrf_token }}";  // Отримайте токен CSRF із Django та збережіть його у JavaScript-змінній
+    </script>
+    <style>
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+        }
+        .navbar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            flex: 1; 
+            text-align: center;
+        }
+        .navbar span {
+            margin: 0 10px;
+            flex: 1; 
+            text-align: center; 
+        }
+        .account-link {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        .vertical-menu {
+            position: fixed;
+            top: 0;
+            right: -100%; 
+            width: 10%; 
+            height: 100vh; 
+            background-color: #f4f4f4;
+            padding: 20px;
+            transition: right 0.3s; 
+        }
+        .vertical-menu a {
+            color: #333;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .messages {
+            height: 73vh; /* Встановіть висоту вашого бокового меню */
+            overflow-y: auto; /* Додайте прокрутку по вертикалі */
+            border: 1px solid #ccc; /* Опціональний рамка для більшого візуального виду */
+}
+    </style>
+</head>
+<body>
+   
+    <div class="navbar">
+        <div style="flex-grow: 1;"> 
+            <span>ServicePlanner</span>
+            <a href="/home/">Послуги</a>
+            <a href="/resources/">Ресурси</a>
+            <a href="/analytics/">Аналіз</a>
+            <a href="/calendar/">Календар</a>
+            <a href="/customer/">Постійники</a>
+            <a href="/recommendations/">Рекомендації</a>
+        </div>
+        <div>
+            <a href="#" class="account-link"></a>
+        </div>
+    </div>
+
+ 
+   
+    <div class="vertical-menu" id="verticalMenu">
+        <h4>Сьогоднішня дата</h4>
+        <p>{{ date_string }}, {{ day_of_week }}</p>
+        <h4>Повідомлення</h4>
+        <div class="messages">
+            {% for notification in notifications %}
+                <div class="notification">
+                    <p> {{ notification.message }}</p>
+                    <p>Від: {{ notification.created_at }}</p>
+                    <button class="delete-btn" data-id="{{ notification.id }}">Видалити</button>
+                </div>
+{% endfor %}
+        </div>
+        <a href="/service-history/" class="history-link">Повна історія</a>
+    </div>
+    
+  
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <script>
+        window.addEventListener('mousemove', function(event) {
+            var menu = document.getElementById('verticalMenu');
+            if (event.clientX > window.innerWidth - 120) { 
+                menu.style.right = '0'; 
+            } else {
+                menu.style.right = '-100%'; 
+            }
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+    var deleteButtons = document.querySelectorAll('.delete-btn');
+
+    deleteButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            var messageId = this.getAttribute('data-id');
+            var csrftoken = getCookie('csrftoken');
+
+            fetch(`/delete-notification/${messageId}/`, {
+                method: 'DELETE',
+                headers: {
+                    'X-CSRFToken': csrftoken
+                },
+            })
+            .then(response => {
+                if (response.ok) {
+                    this.closest('.message').remove();
+                    // Перезавантаження сторінки після успішного видалення
+                    window.location.reload();
+                }
+            })
+            .catch(error => console.error('Помилка:', error));
+        });
+    });
+
+    // Функція для отримання значення токена CSRF з кукі
+    function getCookie(name) {
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+});
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en-uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service History List</title>
+</head>
+<body>
+    <h1>Service History List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Service</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for history in service_history %}
+            <tr>
+                <td>{{ history.client }}</td>
+                <td>{{ history.service }}</td>
+                <td>{{ history.date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+</body>
+</html>

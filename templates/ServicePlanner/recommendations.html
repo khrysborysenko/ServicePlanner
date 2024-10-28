@@ -1,0 +1,79 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .recommendation-block {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .recommendation-block h3 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #333;
+        }
+        .recommendation-block ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .recommendation-block ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .recommendation-block ul li:last-child {
+            border-bottom: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="recommendation-block">
+            <h3>Рекомендації для клієнта: Анна Петриченко</h3>
+            <ul>
+                <li>Виготовлення металевих конструкцій</li>
+                <li>Зварювання алюмінієвих виробів</li>
+                <li>Ремонт зварювального обладнання</li>
+                <li>Ремонт металевих підлог</li>
+            </ul>
+        </div>
+    <div class="recommendation-block">
+            <h3>Рекомендації для клієнта: Юрій Новоселецький</h3>
+            <ul>
+                <li>Зварювання каскадів для промислових споруд</li>
+                <li>Зварювання конструкційних елементів</li>
+                <li>Ремонт зварювального обладнання</li>
+                <li>Виготовлення металевих конструкцій</li>
+            </ul>
+        </div>
+        <div class="recommendation-block">
+            <h3>Рекомендації для клієнта: Влад Борейчук</h3>
+            <ul>
+                {% for service in recommended_services %}
+                    <li>{{ service.name }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+{% endblock %}
+</html>

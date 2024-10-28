@@ -1,0 +1,29 @@
+{% extends 'ServicePlanner/base.html' %}
+{% block title %}Головна сторінка{% endblock %}
+{% block content %}
+
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Видалення клієнта</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'warning_message.css' %}">
+</head>
+<body>
+    <div class="overlay">
+    <div class="confirmation-dialog"> 
+        <h1>Видалення клієнта</h1>
+        <p>Ви впевнені, що хочете видалити клієнта {{ customer.first_name }} {{ customer.last_name }}?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Так, видалити</button>
+            <a href="{% url 'customer_list' %}"><button type="button">Ні, скасувати</button></a>
+        </form>
+    </div>
+    </div> 
+{% endblock %}
+</body>
+</html>
