@@ -5,7 +5,6 @@ Main factors for conducting data analysis in businesses:
 ![image](https://github.com/user-attachments/assets/4bc124b2-7965-4cd2-94ba-65b5794d11f1)
 
 Tasks performed by a web application:
-
   Information collection:
   - Receive service requests.
   - Collect data on required resources.
