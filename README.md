@@ -1,4 +1,4 @@
-'ServicePlanner' is a web application for collecting and analyzing information for service planning, which was successfully tested at the company "Zvaryuvannya-2000".
+'ServicePlanner' is a web application for collecting and analyzing information for service planning, which was successfully tested at the company 'Zvaryuvannya-2000'.
 
 In the context of the rapid development of technology and business process automation, companies encounter the need for continuous analysis of large volumes of data to make optimal decisions. 
 The web application of modern data analysis methods and strategy development for optimization significantly enhances business efficiency.
