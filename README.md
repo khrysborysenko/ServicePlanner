@@ -5,18 +5,18 @@ Main factors for conducting data analysis in businesses:
 ![image](https://github.com/user-attachments/assets/4bc124b2-7965-4cd2-94ba-65b5794d11f1)
 
 Tasks performed by a web application:
-Information collection:
+* Information collection:
   - Receive service requests.
   - Collect data on required resources.
   - Collect customer information.
-Service analysis:
+* Service analysis:
   - Analyze services performed for a selected period.
   - Check the availability of resources in stock.
   - Early warning of insufficient resources.
-Service planning:
+* Service planning:
   - Add future services to the calendar.
   - Manage service performance schedule.
-Customer recommendations:
+* Customer recommendations:
   - Create personalized recommendations based on previous orders and
     preferences.
 
