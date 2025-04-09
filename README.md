@@ -22,13 +22,17 @@ Tasks performed by a web application:
   - Create personalized recommendations based on previous orders and
     preferences.
 
+
 Use Case Diagram:
+
 ![image](https://github.com/user-attachments/assets/de5864da-4b82-4702-b22e-8a65de2890c1)
 
 Project Architecture:
+
 ![image](https://github.com/user-attachments/assets/fddd333f-5449-4b56-b76d-bbd2f1be49e2)
 
 Entity-Relationship Diagram:
+
 ![image](https://github.com/user-attachments/assets/3aea7bdc-5ff5-4e04-a580-6e160f736233)
 
 This application is localized for the Ukrainian market, so user interaction with it is in Ukrainian.
@@ -50,27 +54,35 @@ Changing service characteristics:
 ![image](https://github.com/user-attachments/assets/c7b07f65-20af-406c-9f39-02602ccf2bc1)
 
 "Services" page
+
 ![image](https://github.com/user-attachments/assets/3ce57d86-1e42-4b2a-a1fc-52a5732280e2)
 
 Bar chart of service popularity:
+
 ![image](https://github.com/user-attachments/assets/1d9e55c5-12b1-4e73-9cf2-17f478d99e0d)
 
 Pie chart of service popularity:
+
 ![image](https://github.com/user-attachments/assets/9243d39c-0426-4325-b42a-2596c39fdb70)
 
 Calendar for scheduling services:
+
 ![image](https://github.com/user-attachments/assets/c90a48cf-88a5-49aa-97cb-db99aaf8e497)
 
 Client list page:
+
 ![image](https://github.com/user-attachments/assets/a82bda76-3736-4f9e-b051-5c8003520204)
 
 Resource list:
+
 ![image](https://github.com/user-attachments/assets/64dcfcaf-3a88-4d3d-bf68-6d8052502983)
 
 Side menu with reminders about the need to order resources:
+
 ![image](https://github.com/user-attachments/assets/42a72b63-38b6-4d94-b9e3-e96505da28f6)
 
 Example of recommendations for customers based on their previous orders:
+
 ![image](https://github.com/user-attachments/assets/ca53cb05-f6f8-4c09-8f83-5e939f8bafd6)
 
 
