@@ -31,18 +31,22 @@ Project Architecture:
 Entity-Relationship Diagram:
 ![image](https://github.com/user-attachments/assets/3aea7bdc-5ff5-4e04-a580-6e160f736233)
 
-User interaction with the web application (in Ukrainian)
+This application is localized for the Ukrainian market, so user interaction with it is in Ukrainian.
 
 User Validation:
+
 ![image](https://github.com/user-attachments/assets/c5c11efb-d908-4ebe-89b6-9b00114afd24)
 
 Registration page:
+
 ![image](https://github.com/user-attachments/assets/d8b6ba0b-4e93-4473-8598-e867a8be2ea6)
 
 Admin panel page:
+
 ![image](https://github.com/user-attachments/assets/e192abff-80bf-4b17-9ceb-0a201db9e7e9)
 
 Changing service characteristics:
+
 ![image](https://github.com/user-attachments/assets/c7b07f65-20af-406c-9f39-02602ccf2bc1)
 
 "Services" page
